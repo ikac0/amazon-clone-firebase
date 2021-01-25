@@ -1,9 +1,12 @@
-import './App.css';
+import "./App.css";
+import Header from "./components/header/header.component";
+import Home from "./components/home/home.component";
 
 function App() {
   return (
-    <div className="App">
-     <h1>KURWA MAC</h1>
+    <div className="app">
+      <Header />
+      <Home />
     </div>
   );
 }
