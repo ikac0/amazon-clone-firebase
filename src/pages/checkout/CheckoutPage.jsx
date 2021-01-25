@@ -1,6 +1,6 @@
 import React from "react";
 
-function Checkout() {
+function CheckoutPage() {
   return (
     <div>
       <h1>Im the checkout page</h1>
@@ -8,4 +8,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default CheckoutPage;

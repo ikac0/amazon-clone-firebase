@@ -3,8 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/header/header.component";
-import Home from "./components/home/home.component";
-import Checkout from "./pages/checkout/checkout.component";
+
+import HomePage from "./pages/home/HomePage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header />
-            <Home />
+            <HomePage />
           </Route>
           <Route path="/checkout">
             <Header />
-            <Checkout />
+            <CheckoutPage />
           </Route>
         </Switch>
       </div>

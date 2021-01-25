@@ -1,8 +1,8 @@
 import React from "react";
-import Product from "../product/product.component";
-import "./home.styles.css";
+import Product from "../../components/product/product.component";
+import "./homePage.styles.css";
 
-function Home() {
+function HomePage() {
   return (
     <div className="home">
       <div className="home-container">
@@ -65,4 +65,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
