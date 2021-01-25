@@ -1,25 +1,25 @@
 import React from "react";
 import "./product.styles.css";
 
-function Product() {
+function Product({ title, image, price, rating }) {
   return (
     <div className="product">
       <div className="product-info">
-        <p>The lean startup</p>
+        <p>{title}</p>
         <p className="product-price">
           <small>€</small>
-          <strong>19.99</strong>
+          <strong>{price}</strong>
         </p>
         <div className="product-rating">
-          <p>⭐</p>
-          <p>⭐</p>
-          <p>⭐</p>
+          {/* trick to fill up how many stars should display */}
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <p>⭐</p>
+            ))}
         </div>
       </div>
-      <img
-        src="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
-        alt="product-picture"
-      />
+      <img src={image} alt="" />
       <button>Add to Basket</button>
     </div>
   );
