@@ -4,13 +4,24 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/header/header.component";
 import Home from "./components/home/home.component";
+import Checkout from "./pages/checkout/checkout.component";
 
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <Home />
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route exact path="/">
+            <Header />
+            <Home />
+          </Route>
+          <Route path="/checkout">
+            <Header />
+            <Checkout />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
