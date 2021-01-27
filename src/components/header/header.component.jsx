@@ -2,7 +2,7 @@ import React from "react";
 import "./header.styles.css";
 
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../stateMenagement/StateProvider";
 
@@ -23,10 +23,12 @@ function Header() {
         <SearchIcon className="header-search-icon" />
       </div>
       <div className="header-nav">
-        <div className="header-option">
-          <span className="header-option-line-one">Hello Илија</span>
-          <span className="header-option-line-two">Sign in</span>
-        </div>
+        <Link to="/login">
+          <div className="header-option">
+            <span className="header-option-line-one">Hello Илија</span>
+            <span className="header-option-line-two">Sign in</span>
+          </div>
+        </Link>
         <div className="header-option">
           <span className="header-option-line-one">Returns</span>
           <span className="header-option-line-two">& Orders</span>
