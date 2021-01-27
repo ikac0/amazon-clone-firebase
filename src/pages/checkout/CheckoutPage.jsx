@@ -5,7 +5,7 @@ import { useStateValue } from "../../stateMenagement/StateProvider";
 import "./checkoutPage.styles.css";
 
 function CheckoutPage() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
@@ -16,6 +16,7 @@ function CheckoutPage() {
           className="checkout-ad"
         />
         <div>
+          <h3>Hello, {user ? user.email : "Guest"}</h3>
           <h2 className="checkout-title">Your shopping basket</h2>
           {/* mapping through every single one item that is currently at the basket and need to show up in the checkout page  */}
           {basket.map((x) => (
