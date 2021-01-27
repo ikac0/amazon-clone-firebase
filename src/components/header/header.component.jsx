@@ -2,7 +2,7 @@ import React from "react";
 import "./header.styles.css";
 
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../stateMenagement/StateProvider";
 
@@ -39,8 +39,8 @@ function Header() {
           <div className="header-option-basket">
             <ShoppingBasketIcon />
             <span className="header-option-line-two header-basket-count">
-              set the length of the current state of the basket. import it first
-              on top of the scope
+              {/* set the length of the current state of the basket. import it first
+              on top of the scope */}
               {state.basket.length}
             </span>
           </div>

@@ -58,7 +58,7 @@
 }
 
 .header-option-basket {
-  display: felx;
+  display: flex;
   align-items: center;
   color: white;
 }

@@ -2,6 +2,10 @@ export const initialState = {
   basket: [],
 };
 
+// Selector to itterate
+export const totalPriceToPay = (basket) =>
+  basket?.reduce((amount, item) => item.price + amount, 0);
+
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
@@ -10,21 +14,33 @@ const reducer = (state, action) => {
         ...state,
         basket: [...state.basket, action.item],
       };
+
+    case "REMOVE_FROM_BASKET":
+      // idx --> find the first (and hopefully the only one) item in the array of baskets that matches. using findIndex to select the first item in our current( about to be old) state of the basket so it won't remove all the items with the coresponding ID/Key z.B laptop/wardrobe/monitor
+      const idx = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.id
+      );
+
+      // using let! setting a new state of the basket after removing the item at that current index position that we wanted to remove
+      let newBasket = [...state.basket];
+
+      // if found in basket, it means it exists. just a check
+      if (idx >= 0) {
+        newBasket.splice(idx, 1);
+      } else {
+        alert(`Cant remove product '(id: ${action.id})' as its not in basket!`);
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
+
     default:
       return state;
   }
 };
 
 export default reducer;
-
-// export const initialState = {
-//   basket: [],
-//   user: null,
-// };
-
-// // Selector
-// export const getBasketTotal = (basket) =>
-//   basket?.reduce((amount, item) => item.price + amount, 0);
 
 // const reducer = (state, action) => {
 //   console.log(action);
