@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 // Selector to itterate
@@ -34,7 +35,12 @@ const reducer = (state, action) => {
         ...state,
         basket: newBasket,
       };
-
+    case "SET_USER":
+      // setting the user according to the dispatched action, where we import this line of code, = sign in page.
+      return {
+        ...state,
+        user: action.user,
+      };
     default:
       return state;
   }

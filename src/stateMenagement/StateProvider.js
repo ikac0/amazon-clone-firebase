@@ -4,7 +4,6 @@ import React, { createContext, useContext, useReducer } from "react";
 export const StateContext = createContext();
 
 // Wraping the app and provide the data layer so parts of the app can access it when and where they need it. .provider
-
 export const StateProvider = ({ reducer, initialState, children }) => (
   <StateContext.Provider value={useReducer(reducer, initialState)}>
     {children}

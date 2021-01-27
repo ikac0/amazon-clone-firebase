@@ -5,9 +5,17 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../stateMenagement/StateProvider";
+import { auth } from "../../firebase/firebase";
 
 function Header() {
-  const [state, dispatch] = useStateValue();
+  // we currently need only the basket and the user of the whole CURRENT STATE, that's why we destructure only those two in the [] below this line
+  const [{ basket, user }, dispatch] = useStateValue();
+  const handleAuthentication = () => {
+    if (user) {
+      auth.signOut();
+    } else {
+    }
+  };
 
   return (
     <div className="header">
@@ -23,10 +31,14 @@ function Header() {
         <SearchIcon className="header-search-icon" />
       </div>
       <div className="header-nav">
-        <Link to="/login">
-          <div className="header-option">
-            <span className="header-option-line-one">Hello Илија</span>
-            <span className="header-option-line-two">Sign in</span>
+        <Link to={!user ? "/login" : "/"}>
+          <div onClick={handleAuthentication} className="header-option">
+            <span className="header-option-line-one">
+              Hello {user ? user?.email : "Guest"}
+            </span>
+            <span className="header-option-line-two">
+              {!user ? "Sign In" : "Sign Out"}
+            </span>
           </div>
         </Link>
         <div className="header-option">
@@ -43,7 +55,7 @@ function Header() {
             <span className="header-option-line-two header-basket-count">
               {/* set the length of the current state of the basket. import it first
               on top of the scope */}
-              {state.basket.length}
+              {basket.length}
             </span>
           </div>
         </Link>

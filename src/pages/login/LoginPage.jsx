@@ -1,18 +1,38 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../../firebase/firebase";
 
 import "./loginPage.styles.css";
 
 function LoginPage() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signIn = (e) => {
     e.preventDefault();
-    console.log("Singing IN");
+    console.log("signing in in process, started");
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        history.push("/");
+      })
+      .then(console.log("i am signed in now successfully"))
+      .catch((error) => alert(error.message));
   };
   const signUp = (e) => {
     e.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        console.log(auth);
+        //if there was an authentitation, meaning its not empty:
+        if (auth) {
+          history.push("/"); // to force to redirect to the homepage
+        }
+      })
+      .catch((error) => alert(error.message));
     console.log("Signing UP");
   };
 
