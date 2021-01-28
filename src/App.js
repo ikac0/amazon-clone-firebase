@@ -11,9 +11,10 @@ import HomePage from "./pages/home/HomePage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import LoginPage from "./pages/login/LoginPage";
 import { useStateValue } from "./stateMenagement/StateProvider";
+import PaymentPage from "./pages/payment/PaymentPage";
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     // runs only ONCE when app component loads if [] is empty, or will run whenever the basket changes if we have basket in the [] or whatever we specify.
@@ -21,6 +22,7 @@ function App() {
     auth.onAuthStateChanged((x) => {
       console.log("the user is  ------", x);
 
+      // x meaning userAuth
       if (x) {
         dispatch({
           type: "SET_USER",
@@ -46,6 +48,10 @@ function App() {
           <Route exact path="/">
             <Header />
             <HomePage />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <PaymentPage />
           </Route>
           <Route path="/checkout">
             <Header />
