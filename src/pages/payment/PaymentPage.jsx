@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CheckoutProduct from "../../components/checkoutProduct/checkoutProduct.component";
 import { useStateValue } from "../../stateMenagement/StateProvider";
-import "./paymentPage.styles.css";
+import "./PaymentPage.styles.css";
 
 function PaymentPage() {
   const [{ basket, user }, dispatch] = useStateValue();
