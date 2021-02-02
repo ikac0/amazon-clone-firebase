@@ -27,8 +27,10 @@ function Product({ id, title, image, price, rating }) {
       <div className="product-info">
         <p>{title}</p>
         <p className="product-price">
-          <small>€</small>
-          <strong>{price}</strong>
+          <strong>{price + " "}</strong>
+          <small>
+            <strong>€</strong>
+          </small>
         </p>
         <div className="product-rating">
           {/* trick to fill up how many stars should display */}

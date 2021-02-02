@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from "./firebase/firebase";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { useStateValue } from "./stateMenagement/StateProvider";
 
 import "./App.css";
 
@@ -13,7 +14,6 @@ import Header from "./components/header/header.component";
 import HomePage from "./pages/home/HomePage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import LoginPage from "./pages/login/LoginPage";
-import { useStateValue } from "./stateMenagement/StateProvider";
 import PaymentPage from "./pages/payment/PaymentPage";
 
 const promise = loadStripe(
