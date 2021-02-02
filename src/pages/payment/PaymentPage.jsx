@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CheckoutProduct from "../../components/checkoutProduct/checkoutProduct.component";
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
+
+import { totalPriceToPay } from "../../stateMenagement/reducer";
 import { useStateValue } from "../../stateMenagement/StateProvider";
 import "./paymentPage.styles.css";
 
@@ -48,7 +51,7 @@ function PaymentPage() {
             <h3>Payment Method</h3>
           </div>
           <div className="payment-details">
-            <p>stripe magic</p>
+            <StripeCheckoutButton price={`${totalPriceToPay(basket)} €`} />
           </div>
         </div>
       </div>
