@@ -15,13 +15,14 @@ import HomePage from "./pages/home/HomePage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import LoginPage from "./pages/login/LoginPage";
 import PaymentPage from "./pages/payment/PaymentPage";
+import OrdersPage from "./pages/orders/OrdersPage";
 
 const promise = loadStripe(
   "pk_test_51HSAocDN9xeII8YoKwCrDINpHqe2GHVXeCD8VahY3k5velSOwGe5eQAKJZkNZReEuYpYuCcDZrIuCY9v4krTWakO00n0GTDXfQ"
 );
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     // runs only ONCE when app component loads if [] is empty, or will run whenever the basket changes if we have basket in the [] or whatever we specify.
@@ -45,12 +46,17 @@ function App() {
       }
     });
   }, []);
+
   return (
     <Router>
       <div className="app">
         <Switch>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <OrdersPage />
           </Route>
           <Route exact path="/">
             <Header />

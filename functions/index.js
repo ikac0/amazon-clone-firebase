@@ -17,24 +17,23 @@ app.use(express.json());
 
 // API routes
 // reaching out to the endpoint (specified down the page) and according to the route that we provide, we send the following file as sendFile, or .send('hello world') or whatever it is.
-app.get("/", (req, res) => {
-  res.status(200).send("hello world");
-});
+app.get("/", (request, response) => response.status(200).send("hello world"));
 
-app.post("/payments/create", async (req, res) => {
-  const total = req.query.total;
+app.post("/payments/create", async (request, response) => {
+  const total = request.query.total;
 
-  console.log(`the madafaka owns you  ${total}`);
+  console.log("Payment Request Recieved BOOM!!! for this amount >>> ", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: total,
-    currency: "eur",
+    amount: total, // subunits of the currency
+    currency: "usd",
   });
-  res.status(201).send({
+
+  // OK - Created
+  response.status(201).send({
     clientSecret: paymentIntent.client_secret,
   });
 });
-
 // App listen
 exports.api = functions.https.onRequest(app);
 
