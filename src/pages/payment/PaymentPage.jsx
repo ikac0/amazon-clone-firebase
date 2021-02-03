@@ -5,8 +5,9 @@ import CurrencyFormat from "react-currency-format";
 import CheckoutProduct from "../../components/checkoutProduct/checkoutProduct.component";
 import { totalPriceToPay } from "../../stateMenagement/reducer";
 import { useStateValue } from "../../stateMenagement/StateProvider";
-import "./PaymentPage.styles.css";
+import { db } from "../../firebase/firebase";
 import axios from "../../helpers/axios";
+import "./PaymentPage.styles.css";
 
 function PaymentPage() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -48,6 +49,16 @@ function PaymentPage() {
         },
       })
       .then(({ paymentIntent }) => {
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket, // before emptying them soon
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         //paymentIntent = payment confirmation - successfull, way of saying from the stripe library developers
         setSucceeded(true);
         setError(null);
