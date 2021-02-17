@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from "./firebase/firebase";
 import "./App.css";
+import { useStateValue } from "./stateMenagement/StateProvider";
 
 // Components
 import Header from "./components/header/header.component";
@@ -10,7 +11,6 @@ import Header from "./components/header/header.component";
 import HomePage from "./pages/home/HomePage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import LoginPage from "./pages/login/LoginPage";
-import { useStateValue } from "./stateMenagement/StateProvider";
 import PaymentPage from "./pages/payment/PaymentPage";
 
 function App() {
