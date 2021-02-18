@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth } from "./firebase/firebase";
 import "./App.css";
 import { useStateValue } from "./stateMenagement/StateProvider";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 // Components
 import Header from "./components/header/header.component";
@@ -12,6 +14,11 @@ import HomePage from "./pages/home/HomePage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import LoginPage from "./pages/login/LoginPage";
 import PaymentPage from "./pages/payment/PaymentPage";
+import OrdersPage from "./pages/orders/OrdersPage";
+
+const promise = loadStripe(
+  "pk_test_51HSAocDN9xeII8YoKwCrDINpHqe2GHVXeCD8VahY3k5velSOwGe5eQAKJZkNZReEuYpYuCcDZrIuCY9v4krTWakO00n0GTDXfQ"
+);
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -20,8 +27,6 @@ function App() {
     // runs only ONCE when app component loads if [] is empty, or will run whenever the basket changes if we have basket in the [] or whatever we specify.
     //observing if we are logged in/ out/ in / out. whenever changes, it fires.
     auth.onAuthStateChanged((x) => {
-      console.log("the user is  ------", x);
-
       // x meaning userAuth
       if (x) {
         dispatch({
@@ -51,7 +56,13 @@ function App() {
           </Route>
           <Route path="/payment">
             <Header />
-            <PaymentPage />
+            <Elements stripe={promise}>
+              <PaymentPage />
+            </Elements>
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <OrdersPage />
           </Route>
           <Route path="/checkout">
             <Header />

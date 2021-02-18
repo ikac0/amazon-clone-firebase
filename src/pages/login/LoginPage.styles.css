@@ -64,3 +64,11 @@
   margin-top: 10px;
   border-color: darkgray;
 }
+
+.provided-details-intro {
+  padding: 30px;
+}
+.provided-details-details {
+  font-weight: 600;
+  line-height: 1.5;
+}

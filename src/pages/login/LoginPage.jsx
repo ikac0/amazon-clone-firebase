@@ -79,6 +79,13 @@ function LoginPage() {
           Create your Amazon account
         </button>
       </div>
+      <div className="provided-details">
+        <p className="provided-details-intro">Please use:</p>
+        <div className="provided-details-details">
+          <p>Email: ile@ile.com</p>
+          <p>Password: 12341234</p>
+        </div>
+      </div>
     </div>
   );
 }
