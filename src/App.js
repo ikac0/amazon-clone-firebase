@@ -5,8 +5,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useStateValue } from "./stateMenagement/StateProvider";
 
-import "./App.css";
-
 // Components
 import Header from "./components/header/header.component";
 
