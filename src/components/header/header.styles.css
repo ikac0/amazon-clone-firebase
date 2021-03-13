@@ -1,5 +1,11 @@
+body {
+  max-width: 3860px;
+  margin: auto;
+}
+
 .header {
   height: 60px;
+  width: auto;
   display: flex;
   align-items: center;
   background-color: #131921;

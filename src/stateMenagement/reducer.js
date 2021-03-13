@@ -24,7 +24,7 @@ const reducer = (state, action) => {
     case "REMOVE_FROM_BASKET":
       // idx --> find the first (and hopefully the only one) item in the array of baskets that matches. using findIndex to select the first item in our current( about to be old) state of the basket so it won't remove all the items with the coresponding ID/Key z.B laptop/wardrobe/monitor
       const idx = state.basket.findIndex(
-        (basketItem) => basketItem.id === action.id
+        (basketItem) => basketItem.key === action.id
       );
 
       // using let! setting a new state of the basket after removing the item at that current index position that we wanted to remove

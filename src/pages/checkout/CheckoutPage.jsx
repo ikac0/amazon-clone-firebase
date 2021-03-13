@@ -21,7 +21,7 @@ function CheckoutPage() {
           {/* mapping through every single one item that is currently at the basket and need to show up in the checkout page  */}
           {basket.map((x) => (
             <CheckoutProduct
-              id={x.id}
+              key={x.id}
               title={x.title}
               image={x.image}
               price={x.price}

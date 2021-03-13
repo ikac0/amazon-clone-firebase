@@ -20,7 +20,7 @@ function PaymentPage() {
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState(false);
+  const [processing, setProcessing] = useState("");
   const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
@@ -103,13 +103,13 @@ function PaymentPage() {
             <h3>Review items and delivery</h3>
           </div>
           <div className="payment-items">
-            {basket.map((x) => (
+            {basket.map((item) => (
               <CheckoutProduct
-                id={x.id}
-                title={x.title}
-                image={x.image}
-                price={x.price}
-                rating={x.rating}
+                key={item.id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                rating={item.rating}
               />
             ))}
           </div>

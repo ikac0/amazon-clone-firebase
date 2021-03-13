@@ -21,7 +21,7 @@ function HomePage() {
           />
           <Product
             id="42342423"
-            title="Bose QuietComfort 35 (Series II)"
+            title="Bose QuietComfort 35, noise calceling (Series II)"
             price={207.99}
             rating={5}
             image="https://m.media-amazon.com/images/I/71+iQZU-dVL._AC_SX679_.jpg"
